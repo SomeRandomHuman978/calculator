@@ -1,4 +1,4 @@
-const functionDisplayElement = document.getElementById("functionDisplay");
+cconst functionDisplayElement = document.getElementById("functionDisplay");
 
 let functionAnswer = "";
 

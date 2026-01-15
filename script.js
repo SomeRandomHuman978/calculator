@@ -227,7 +227,11 @@ function insertGoldenRatio() {
 }
 
 function toggleSpecialButtons() {
+  // Toggle each special button by checking its computed display and switching it.
+  // Using inline styles here so this works with your existing CSS (no CSS changes required).
   document.querySelectorAll(".specialButton").forEach(button => {
-    button.classList.toggle(".hidden");
+    const computedDisplay = getComputedStyle(button).display;
+    // prefer inline-block so button sizing/margins remain consistent
+    button.style.display = (computedDisplay === "none") ? "inline-block" : "none";
   });
 }

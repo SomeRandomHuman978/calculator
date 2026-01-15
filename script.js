@@ -1,4 +1,4 @@
-cconst functionDisplayElement = document.getElementById("functionDisplay");
+const functionDisplayElement = document.getElementById("functionDisplay");
 
 let functionAnswer = "";
 
@@ -185,7 +185,8 @@ function calculateAnswer() {
     functionAnswer = Number(firstNumber) / Number(secondNumber);
   }
   updateFunctionTextWithAnswer();
-  firstNumber = functionDisplayElement.innerHTML;
+  // store the numeric/string answer as the first number for further operations
+  firstNumber = String(functionAnswer);
   secondNumber = "";
   functionSelected = "";
 }
@@ -228,7 +229,9 @@ function insertGoldenRatio() {
 
 function toggleSpecialButtons() {
   document.querySelectorAll(".specialButton").forEach(button => {
-    const computedDisplay = getComputedStyle(button).display;
-    button.style.display = (computedDisplay === "none") ? "inline-block" : "none";
+    // use computed style to determine current visibility, then toggle by setting inline style
+    const isHidden = getComputedStyle(button).display === "none";
+    // When showing, clear the inline style so the element falls back to its stylesheet/default display.
+    button.style.display = isHidden ? "" : "none";
   });
 }
